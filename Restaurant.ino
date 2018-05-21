@@ -1,10 +1,10 @@
 #include <LiquidCrystal.h>
 #include <Keypad.h>
-#include <GSMSim.h>
+// #include <GSMSim.h>
 
-#define RX 7
-#define TX 8
-#define RESET 2
+// #define RX 7
+// #define TX 8
+// #define RESET 2
 #define BAUD 9600
 
 const String tarrif[9][9] = {
@@ -20,7 +20,7 @@ const String tarrif[9][9] = {
 const byte lcdSize[2] = {20, 4};
 
 LiquidCrystal lcd(11, 8, 4, 5, 6, 7);
-GSMSim gsm(RX, TX, RESET);
+// GSMSim gsm(RX, TX, RESET);
 
 void setup()
 {
