@@ -6,7 +6,6 @@
 #define TX 10
 #define RESET 13
 #define BAUD 115200
-
 const String tarrif[9][9] = {
     {"Umugati", "200"},
     {"Icyayi", "200"},
@@ -25,7 +24,7 @@ GSMSim gsm(RX, TX, RESET);
 void setup()
 {
   // Serial.begin(BAUD);
-  lcdsetup(), lcd.setCursor(0, 0), lcd.print("Wecome To Restaurant");
+  lcdsetup(), lcd.setCursor(0, 0), lcd.print("WELCOME IN OUR HOTEL");
   delay(2000), lcd.clear();
 };
 
