@@ -17,7 +17,7 @@
 //   Serial.println("Changing to text mode.");
 //   gsm.smsTextMode(true);
 
-//   char *number = "+905123456789";
+//   char *number = "+250785782928";
 //   String message = "Hi my friend. How are you?";
 //   Serial.println("Sending Message --->");
 //   Serial.println(gsm.smsSend(number, message));
