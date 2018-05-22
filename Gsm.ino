@@ -4,7 +4,7 @@ void gsmSetup()
 {
   gsm.start(BAUD);
   gsm.smsTextMode(true);
-  delay(3000);
+  delay(5000);
 };
 
 bool sendOrder(String Order)
