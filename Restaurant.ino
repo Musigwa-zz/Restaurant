@@ -2,8 +2,8 @@
 #include <Keypad.h>
 #include <GSMSim.h>
 
-#define RX 12
-#define TX 10
+#define RX 10
+#define TX 12
 #define RESET 13
 #define BAUD 115200
 const String tarrif[9][9] = {
@@ -23,7 +23,6 @@ GSMSim gsm(RX, TX, RESET);
 
 void setup()
 {
-  // Serial.begin(BAUD);
   lcdsetup(), lcd.setCursor(0, 0), lcd.print("WELCOME IN OUR HOTEL");
   delay(2000), lcd.clear();
 };
@@ -31,4 +30,4 @@ void setup()
 void loop()
 {
   proccessOrder();
-}
+};

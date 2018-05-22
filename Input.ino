@@ -35,8 +35,7 @@ void proccessOrder()
         {
           lcd.print(","), lcd.print(pressedKey), i += 2;
         }
-        clearRow(lcdSize, 3), lcd.print("Total:"), lcd.print(Total);
-        lcd.print("RWF");
+        clearRow(lcdSize, 3), lcd.print("Total:"), lcd.print(Total), lcd.print("RWF");
       }
       if (j < 1 && i == 19)
       {
@@ -59,8 +58,7 @@ void proccessOrder()
         if (Total != 0)
         {
           Confirmed = true, lcd.setCursor(0, 0), lcd.print("CONFIRM REQST:");
-          lcd.setCursor(0, 2);
-          lcd.print("YES [#]       NO [*]");
+          lcd.setCursor(0, 2), lcd.print("YES [#]       NO [*]");
         }
         else
         {
