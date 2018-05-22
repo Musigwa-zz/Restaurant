@@ -2,9 +2,9 @@
 #include <Keypad.h>
 #include <GSMSim.h>
 
-#define RX 7
-#define TX 8
-#define RESET 9
+#define RX 12
+#define TX 10
+#define RESET 13
 #define BAUD 115200
 
 const String tarrif[9][9] = {

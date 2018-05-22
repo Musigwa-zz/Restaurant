@@ -32,6 +32,12 @@ Lcd Dis ====> Arduino
     D6  ====> 06
     D7  ====> 07
 
+GSM MODULE      Arduino
+    RX              10
+    TX              12
+    RST             13
+
+Note that this GSM library that we are using supports (Sim800L and Sim800H only)!.
 Please read everything carefully!!
 
 Please Note that the mempry statuses are the following. So, adding many other

@@ -47,8 +47,11 @@ void proccessOrder()
     {
       if (Confirmed)
       {
-        clearRow(lcdSize, 2), lcd.print("Sent!"), delay(2000), lcd.clear();
-        // sendOrder(clientOrder),break;
+        lcd.clear(), lcd.setCursor(1, 2), lcd.print("SENDING RERQUEST...");
+        lcd.setCursor(5, 3);
+        lcd.print(sendOrder(clientOrder) == true ? "SENT!" : "NOT SENT");
+        delay(2000), lcd.clear();
+        break;
       }
       else
       {
@@ -56,7 +59,7 @@ void proccessOrder()
         if (Total != 0)
         {
           Confirmed = true, lcd.setCursor(0, 0), lcd.print("CONFIRM REQST:");
-          lcd.setCursor(0,2);
+          lcd.setCursor(0, 2);
           lcd.print("YES [#]       NO [*]");
         }
         else

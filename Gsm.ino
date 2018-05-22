@@ -1,5 +1,4 @@
-char *number = "+905123456789";
-char *message = "Hi my friend. How are you?";
+char *number = "+250785782928";
 
 void gsmSetup()
 {
@@ -8,11 +7,9 @@ void gsmSetup()
   delay(3000);
 };
 
-bool sendOrder(char *Order)
+bool sendOrder(String Order)
 {
-  Serial.println("Sending order...");
-  gsm.smsSend(number, Order);
-  delay(2000);
+  return gsm.smsSend(number, Order);
 };
 
 void showResponse()
