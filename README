@@ -36,9 +36,21 @@ GSM MODULE      Arduino
     RX              10
     TX              12
     RST             13
+++++++++++++++++++++++++++++++++++++++++
++                                      +
++   Please read the notes carefully!   +
++                                      +
+++++++++++++++++++++++++++++++++++++++++
 
 Note that this GSM library that we are using supports (Sim800L and Sim800H only)!.
-Please read everything carefully!!
+I have modified some codes in the Library and attached its folder containing the 
+changes, make sure to use the library attached to this project instead of installing
+it externally.
 
-Please Note that the mempry statuses are the following. So, adding many other
-thing may resul to the memory leak!. Thanks and waiting for your feedbacks.
+Please Note that the memory statuses are the following":
+
+[The Sketch uses 9620 bytes (29%) of program storage space. Maximum is 32256 bytes.]
+[The Global variables use 1320 bytes (64%) of dynamic memory, leaving 728 bytes for local variables.] 
+[The Maximum is 2048 bytes.]
+
+So, adding many other things may result the memory leak!. Thanks and waiting for your feedbacks.
