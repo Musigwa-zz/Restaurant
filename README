@@ -33,3 +33,6 @@ Lcd Dis ====> Arduino
     D7  ====> 07
 
 Please read everything carefully!!
+
+Please Note that the mempry statuses are the following. So, adding many other
+thing may resul to the memory leak!. Thanks and waiting for your feedbacks.
