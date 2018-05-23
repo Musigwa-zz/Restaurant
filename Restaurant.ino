@@ -1,10 +1,10 @@
 #include <LiquidCrystal.h>
 #include <Keypad.h>
-#include <GSMSim.h>
+#include <SoftwareSerial.h>
 
 #define RX 10
 #define TX 12
-#define BAUD 115200
+#define BAUD 9600
 const String tarrif[9][9] = {
     {"Umugati", "200"},
     {"Icyayi", "200"},
@@ -18,12 +18,13 @@ const String tarrif[9][9] = {
 const byte lcdSize[2] = {20, 4};
 
 LiquidCrystal lcd(11, 8, 4, 5, 6, 7);
-GSMSim gsm(RX, TX);
+SoftwareSerial GSM(RX, TX);
 
 void setup()
 {
-  lcdsetup(), lcd.setCursor(0, 0), lcd.print("WELCOME IN OUR HOTEL");
-  lcd.setCursor(0, 1), lcd.print("WAIT SCREEN TO CLEAR"), gsmSetup(), lcd.clear();
+  lcdsetup(), lcd.setCursor(0, 0), lcd.print("WELCOME IN OUR HOTEL"), GSM.begin(BAUD);
+  lcd.setCursor(0, 1), lcd.print("CHECKING THE GSM..."), lcd.setCursor(4, 2);
+  lcd.print(isGsmReady() ? "GSM IS READY!" : "NOT CONNECTED!"), delay(2000), lcd.clear();
 };
 
 void loop()
