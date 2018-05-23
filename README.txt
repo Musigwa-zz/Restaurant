@@ -49,8 +49,8 @@ it externally.
 
 Please Note that the memory statuses are the following":
 
-[The Sketch uses 9620 bytes (29%) of program storage space. Maximum is 32256 bytes.]
-[The Global variables use 1320 bytes (64%) of dynamic memory, leaving 728 bytes for local variables.] 
-[The Maximum is 2048 bytes.]
+Sketch uses 10062 bytes (31%) of program storage space. Maximum is 32256 bytes.
+Global variables use 1364 bytes (66%) of dynamic memory, 
+leaving 684 bytes for local variables. Maximum is 2048 bytes.
 
 So, adding many other things may result the memory leak!. Thanks and waiting for your feedbacks.
