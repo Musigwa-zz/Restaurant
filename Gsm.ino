@@ -1,4 +1,4 @@
-String number = "+250785782928";
+const String number = "+250785782928";
 
 bool isGsmReady()
 {
