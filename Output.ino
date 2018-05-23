@@ -16,15 +16,3 @@ bool clearRow(const byte scrnSize[2], const byte R2Del)
     return true;
   }
 };
-
-void scroll(String Text, byte Delay)
-{
-  String pri = Text.substring(0, lcdSize[0]);
-  Text.remove(0, pri.length());
-  Serial.println(pri);
-  for (;;)
-  {
-    lcd.print(Text.substring(0, lcdSize[0])), delay(Delay);
-    lcd.setCursor(0, 0);
-  }
-};

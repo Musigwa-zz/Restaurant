@@ -48,7 +48,7 @@ void proccessOrder()
       {
         lcd.clear(), lcd.setCursor(1, 2), lcd.print("SENDING RERQUEST...");
         lcd.setCursor(5, 3);
-        lcd.print(sendOrder(clientOrder + "The Total payment is: " + Total) ? "SENT!" : "NOT SENT");
+        lcd.print(sendOrder(clientOrder + " The Total payment is: " + Total) ? "SENT!" : "NOT SENT");
         delay(2000), lcd.clear();
         break;
       }
