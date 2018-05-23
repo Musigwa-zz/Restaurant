@@ -2,8 +2,8 @@
 #include <Keypad.h>
 #include <SoftwareSerial.h>
 
-#define RX 10
 #define TX 12
+#define RX 10
 #define BAUD 9600
 
 const String tarrif[9][9] = {
@@ -17,13 +17,14 @@ const String tarrif[9][9] = {
     {"Umuceri", "500"},
     {"Isosi", "200"}};
 
-const String number = "+250784896859";
+const String number = "+250788228892";
 const byte lcdSize[2] = {20, 4};
 LiquidCrystal lcd(11, 8, 4, 5, 6, 7);
-SoftwareSerial SIM800L(RX, TX);
+SoftwareSerial SIM800L(TX, RX);
 
 void setup()
 {
+  Serial.begin(BAUD);
   lcdsetup(), lcd.setCursor(0, 0), lcd.print("WELCOME IN OUR HOTEL"), SIM800L.begin(BAUD);
   lcd.setCursor(0, 1), lcd.print("CHECKING THE GSM..."), lcd.setCursor(3, 2);
   lcd.print(isGsmReady() ? "GSM IS READY!" : "NOT CONNECTED!"), delay(2000), lcd.clear();
