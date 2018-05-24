@@ -12,7 +12,7 @@ const String number = "+250788228892";
 byte qin = 0;
 bool c = false;
 const byte lcdSize[2] = {20, 4};
-const char *tarrif[9][9] = {
+const char *tarrif[8][8] = {
     {"Umugati", "200"},
     {"Icyayi", "200"},
     {"Umureti", "1500"},
@@ -20,8 +20,7 @@ const char *tarrif[9][9] = {
     {"Ibishyimbo", "400"},
     {"Ifiriti", "1000"},
     {"Inyama", "1500"},
-    {"Umuceri", "500"},
-    {"Isosi", "200"}};
+    {"Umuceri", "500"}};
 
 SoftwareSerial SIM800L(TX, RX);
 LiquidCrystal lcd(13, 12, 9, 8, 7, 6);
@@ -106,11 +105,11 @@ bool clearRow(const byte scrnSize[2], const byte R2Del)
 void showTarrif(byte ind)
 {
   lcd.setCursor(0, 0), lcd.print(ind + 1), lcd.print("."), lcd.print(tarrif[ind][0]);
-  lcd.print("="), lcd.print(tarrif[ind + 1][1]), lcd.print("RWF");
+  lcd.print("="), lcd.print(tarrif[ind + 0][1]), lcd.print("RWF");
   lcd.setCursor(0, 1), lcd.print(ind + 2), lcd.print("."), lcd.print(tarrif[ind + 1][0]);
-  lcd.print("="), lcd.print(tarrif[ind + 2][1]), lcd.print("RWF");
+  lcd.print("="), lcd.print(tarrif[ind + 1][1]), lcd.print("RWF");
   lcd.setCursor(0, 2), lcd.print(ind + 3), lcd.print("."), lcd.print(tarrif[ind + 2][0]);
-  lcd.print("="), lcd.print(tarrif[ind + 3][1]), lcd.print("RWF");
+  lcd.print("="), lcd.print(tarrif[ind + 2][1]), lcd.print("RWF");
   lcd.setCursor(0, 3), lcd.print(ind + 4), lcd.print("."), lcd.print(tarrif[ind + 3][0]);
-  lcd.print("="), lcd.print(tarrif[ind + 4][1]), lcd.print("RWF");
+  lcd.print("="), lcd.print(tarrif[ind + 3][1]), lcd.print("RWF");
 };
