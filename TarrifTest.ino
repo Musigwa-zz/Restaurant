@@ -3,27 +3,35 @@
 #include <Keypad.h>
 #include <SoftwareSerial.h>
 
+#define nextTimeout 2000
 #define RX 10
 #define TX 11
 #define BAUD 9600
 
-unsigned int period_nextScreen = 2000;
-unsigned long lastMs_nextScreen = 0;
-
+unsigned long oldTime = 0;
 const String number = "+250788228892";
 const byte lcdSize[2] = {20, 4};
+const String tarrif[9][9] = {
+    {"Umugati", "200"},
+    {"Icyayi", "200"},
+    {"Umureti", "1500"},
+    {"Special", "2000"},
+    {"Ibishyimbo", "400"},
+    {"Ifiriti", "1000"},
+    {"Inyama", "1500"},
+    {"Umuceri", "500"},
+    {"Isosi", "200"}};
 
 SoftwareSerial SIM800L(TX, RX);
-LiquidCrystal lcd(11, 8, 4, 5, 6, 7);
-LiquidLine line1(3, 0, "LiquidMenu 1");
-LiquidLine line2(3, 1, "LiquidMenu 2");
-LiquidLine line3(3, 2, "LiquidMenu 3");
-LiquidLine line4(3, 3, "LiquidMenu 4");
-
-LiquidLine line5(3, 0, "LiquidMenu 5");
-LiquidLine line6(3, 1, "LiquidMenu 6");
-LiquidLine line7(3, 2, "LiquidMenu 7");
-LiquidLine line8(3, 3, "LiquidMenu 8");
+LiquidCrystal lcd(13, 12, 9, 8, 7, 6);
+LiquidLine line1(0, 0, "1.", tarrif[0][0], "=", tarrif[0][1]);
+LiquidLine line2(0, 1, "2.", tarrif[1][0], "=", tarrif[1][1]);
+LiquidLine line3(0, 2, "3.", tarrif[2][0], "=", tarrif[2][1]);
+LiquidLine line4(0, 3, "4.", tarrif[3][0], "=", tarrif[3][1]);
+LiquidLine line5(0, 0, "5.", tarrif[4][0], "=", tarrif[4][1]);
+LiquidLine line6(0, 1, "6.", tarrif[5][0], "=", tarrif[5][1]);
+LiquidLine line7(0, 2, "7.", tarrif[6][0], "=", tarrif[6][1]);
+LiquidLine line8(0, 3, "8.", tarrif[7][0], "=", tarrif[7][1]);
 
 LiquidScreen firstScrn(line1, line2, line3, line4);
 LiquidScreen secondScrn(line5, line6, line7, line8);
@@ -40,9 +48,9 @@ void setup()
 
 void loop()
 {
-  if (millis() - lastMs_nextScreen > period_nextScreen)
+  if (millis() - oldTime > nextTimeout)
   {
-    lastMs_nextScreen = millis();
+    oldTime = millis();
     menu.next_screen();
   }
 };
@@ -63,7 +71,7 @@ bool isGsmReady()
 String _readSerial(uint32_t timeout)
 {
   uint64_t timeOld = millis();
-  while (!SIM800L.available() && !(millis() > timeOld + timeout))
+  while (!SIM800L.available() && !(millis() > timeOld + nextTimeout))
   {
     delay(13);
   }
@@ -96,3 +104,5 @@ bool clearRow(const byte scrnSize[2], const byte R2Del)
     return true;
   }
 };
+
+void showTarrif() {}
