@@ -3,7 +3,7 @@
 // #include <SoftwareSerial.h>
 
 // #define RX 10
-// #define TX 12
+// #define TX 11
 // #define BAUD 9600
 
 // const String number = "+250788228892";
