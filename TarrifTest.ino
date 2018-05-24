@@ -12,7 +12,7 @@ const String number = "+250788228892";
 byte qin = 0;
 bool c = false;
 const byte lcdSize[2] = {20, 4};
-char *tarrif[9][9] = {
+const char *tarrif[9][9] = {
     {"Umugati", "200"},
     {"Icyayi", "200"},
     {"Umureti", "1500"},
@@ -37,6 +37,7 @@ void loop()
 {
   if (millis() - oldTime > nextTimeout)
   {
+    lcd.clear();
     if (c)
     {
       qin = 0;
