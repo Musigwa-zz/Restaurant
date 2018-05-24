@@ -15,29 +15,13 @@ bool sendOrder(String Order)
 {
   if (isGsmReady())
   {
-    String _buffer;
     SIM800L.println("AT+CMGF=1");
     delay(10);
     SIM800L.println("AT+CMGS=\"" + number + "\"");
-    _buffer = _readSerial(5000);
     delay(10);
     SIM800L.println(Order);
-    // delay(10);
-    _buffer += _readSerial(5000);
-    SIM800L.print((char)26);
-    _buffer += _readSerial(5000);
-    if (((_buffer.indexOf("AT+CMGS")) != -1))
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
-  }
-  else
-  {
-    return false;
+    delay(10);
+    SIM800L.write(26);
   }
 };
 

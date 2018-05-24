@@ -2,8 +2,8 @@
 #include <Keypad.h>
 #include <SoftwareSerial.h>
 
-#define TX 12
 #define RX 10
+#define TX 12
 #define BAUD 9600
 
 const String tarrif[9][9] = {
@@ -24,7 +24,6 @@ SoftwareSerial SIM800L(TX, RX);
 
 void setup()
 {
-  Serial.begin(BAUD);
   lcdsetup(), lcd.setCursor(0, 0), lcd.print("WELCOME IN OUR HOTEL"), SIM800L.begin(BAUD);
   lcd.setCursor(0, 1), lcd.print("CHECKING THE GSM..."), lcd.setCursor(3, 2);
   lcd.print(isGsmReady() ? "GSM IS READY!" : "NOT CONNECTED!"), delay(2000), lcd.clear();

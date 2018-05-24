@@ -35,7 +35,6 @@ Lcd Dis ====> Arduino
 GSM MODULE      Arduino
     RX              10
     TX              12
-    RST             13
 ++++++++++++++++++++++++++++++++++++++++
 +                                      +
 +   Please read the notes carefully!   +

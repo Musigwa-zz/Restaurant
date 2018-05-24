@@ -24,7 +24,6 @@ void proccessOrder()
       if (i < 20)
       {
         clientOrder += tarrif[(pressedKey - 0) - 49][0] + ", ";
-        Serial.println(clientOrder);
         Total += tarrif[(pressedKey - 0) - 49][1].toInt();
         lcd.setCursor(0, 0), lcd.print("YOU'VE CHOSEN:"), lcd.setCursor(i, j);
 
@@ -49,9 +48,8 @@ void proccessOrder()
       {
         lcd.clear(), lcd.setCursor(1, 2), lcd.print("SENDING RERQUEST...");
         lcd.setCursor(5, 3);
-        // lcd.print(sendOrder(clientOrder + " The Total payment is: " + Total) ? "SENT!" : "NOT SENT");
-        clientOrder += ". The Total payement is: ";
-        Serial.println(clientOrder);
+        clientOrder += ". Payment: ", clientOrder += Total, clientOrder += " RWF";
+        lcd.print(sendOrder(clientOrder) ? "SENT!" : "NOT SENT");
         delay(2000), lcd.clear();
         break;
       }
