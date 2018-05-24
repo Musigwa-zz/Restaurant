@@ -106,11 +106,11 @@ bool clearRow(const byte scrnSize[2], const byte R2Del)
 void showTarrif(byte ind)
 {
   lcd.setCursor(0, 0), lcd.print(ind + 1), lcd.print("."), lcd.print(tarrif[ind][0]);
-  lcd.print("="), lcd.print(tarrif[ind][1]), lcd.print("RWF"), ;
+  lcd.print("="), lcd.print(tarrif[ind][1]), lcd.print("RWF");
   lcd.setCursor(0, 1), lcd.print(ind + 2), lcd.print("."), lcd.print(tarrif[ind + 1][0]);
-  lcd.print("="), lcd.print(tarrif[ind][1]), lcd.print("RWF"), ;
+  lcd.print("="), lcd.print(tarrif[ind][1]), lcd.print("RWF");
   lcd.setCursor(0, 2), lcd.print(ind + 3), lcd.print("."), lcd.print(tarrif[ind + 2][0]);
-  lcd.print("="), lcd.print(tarrif[ind][1]), lcd.print("RWF"), ;
+  lcd.print("="), lcd.print(tarrif[ind][1]), lcd.print("RWF");
   lcd.setCursor(0, 3), lcd.print(ind + 4), lcd.print("."), lcd.print(tarrif[ind + 3][0]);
-  lcd.print("="), lcd.print(tarrif[ind][1]), lcd.print("RWF"), ;
+  lcd.print("="), lcd.print(tarrif[ind][1]), lcd.print("RWF");
 };
