@@ -10,8 +10,10 @@
 
 unsigned long oldTime = 0;
 const String number = "+250788228892";
+byte index = 0;
+bool c = false;
 const byte lcdSize[2] = {20, 4};
-const String tarrif[9][9] = {
+char *tarrif[9][9] = {
     {"Umugati", "200"},
     {"Icyayi", "200"},
     {"Umureti", "1500"},
@@ -24,17 +26,12 @@ const String tarrif[9][9] = {
 
 SoftwareSerial SIM800L(TX, RX);
 LiquidCrystal lcd(13, 12, 9, 8, 7, 6);
-LiquidLine line1(0, 0, "1.", tarrif[0][0], "=", tarrif[0][1]);
-LiquidLine line2(0, 1, "2.", tarrif[1][0], "=", tarrif[1][1]);
-LiquidLine line3(0, 2, "3.", tarrif[2][0], "=", tarrif[2][1]);
-LiquidLine line4(0, 3, "4.", tarrif[3][0], "=", tarrif[3][1]);
-LiquidLine line5(0, 0, "5.", tarrif[4][0], "=", tarrif[4][1]);
-LiquidLine line6(0, 1, "6.", tarrif[5][0], "=", tarrif[5][1]);
-LiquidLine line7(0, 2, "7.", tarrif[6][0], "=", tarrif[6][1]);
-LiquidLine line8(0, 3, "8.", tarrif[7][0], "=", tarrif[7][1]);
+LiquidLine line1(0, 0, "1.", tarrif[index][0], "=", tarrif[index][1]);
+LiquidLine line2(0, 1, "2.", tarrif[index + 1][0], "=", tarrif[index + 1][1]);
+LiquidLine line3(0, 2, "3.", tarrif[index + 2][0], "=", tarrif[index + 2][1]);
+LiquidLine line4(0, 3, "4.", tarrif[index + 3][0], "=", tarrif[index + 3][1]);
 
 LiquidScreen firstScrn(line1, line2, line3, line4);
-LiquidScreen secondScrn(line5, line6, line7, line8);
 LiquidMenu menu(lcd);
 
 void setup()
@@ -43,15 +40,24 @@ void setup()
   lcd.setCursor(0, 1), lcd.print("CHECKING THE GSM..."), lcd.setCursor(3, 2);
   lcd.print(isGsmReady() ? "GSM IS READY!" : "NOT CONNECTED!"), delay(2000), lcd.clear();
   menu.add_screen(firstScrn);
-  menu.add_screen(secondScrn);
 };
 
 void loop()
 {
   if (millis() - oldTime > nextTimeout)
   {
+    if (c)
+    {
+      index = 0;
+      c = !c;
+    }
+    else
+    {
+      index = 4;
+      c = !c;
+    }
     oldTime = millis();
-    menu.next_screen();
+    menu.update();
   }
 };
 
