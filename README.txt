@@ -15,41 +15,36 @@
  KeyPad connection schema
 
  KeyPad ====> Arduino
-    R1  ====> A0  
-    R2  ====> A1
-    R3  ====> A2
-    R4  ====> A3
-    C1  ====> A4
-    C2  ====> A5
-    C3  ====> 02
-    C4  ====> 03
+    R1  ====> 5  
+    R2  ====> 4
+    R3  ====> 3
+    R4  ====> A0
+    C1  ====> A1
+    C2  ====> A2
+    C3  ====> A3
+    C4  ====> A4
 
 Lcd Dis ====> Arduino
-    RS  ====> 11  
-    E   ====> 08
-    D4  ====> 04
-    D5  ====> 05
-    D6  ====> 06
-    D7  ====> 07
+    RS  ====> 13  
+    E   ====> 12
+    D4  ====> 9
+    D5  ====> 8
+    D6  ====> 7
+    D7  ====> 6
 
 GSM MODULE      Arduino
     RX              10
-    TX              12
+    TX              11
 ++++++++++++++++++++++++++++++++++++++++
 +                                      +
 +   Please read the notes carefully!   +
 +                                      +
 ++++++++++++++++++++++++++++++++++++++++
 
-Note that this GSM library that we are using supports (Sim800L and Sim800H only)!.
-I have modified some codes in the Library and attached its folder containing the 
-changes, make sure to use the library attached to this project instead of installing
-it externally.
-
 Please Note that the memory statuses are the following":
 
-Sketch uses 10062 bytes (31%) of program storage space. Maximum is 32256 bytes.
-Global variables use 1364 bytes (66%) of dynamic memory, 
-leaving 684 bytes for local variables. Maximum is 2048 bytes.
+The Sketch uses 9540 bytes (29%) of program storage space. Maximum is 32256 bytes.
+The Global variables use 1191 bytes (58%) of dynamic memory, 
+leaving 857 bytes for local variables. Maximum is 2048 bytes.
 
-So, adding many other things may result the memory leak!. Thanks and waiting for your feedbacks.
+So, adding many other things may result the memory leak!.
