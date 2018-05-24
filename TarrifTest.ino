@@ -1,5 +1,4 @@
 #include <LiquidCrystal.h>
-#include <LiquidMenu.h>
 #include <Keypad.h>
 #include <SoftwareSerial.h>
 
@@ -10,7 +9,7 @@
 
 unsigned long oldTime = 0;
 const String number = "+250788228892";
-byte index = 0;
+byte qin = 0;
 bool c = false;
 const byte lcdSize[2] = {20, 4};
 char *tarrif[9][9] = {
@@ -26,20 +25,12 @@ char *tarrif[9][9] = {
 
 SoftwareSerial SIM800L(TX, RX);
 LiquidCrystal lcd(13, 12, 9, 8, 7, 6);
-LiquidLine line1(0, 0, "1.", tarrif[index][0], "=", tarrif[index][1]);
-LiquidLine line2(0, 1, "2.", tarrif[index + 1][0], "=", tarrif[index + 1][1]);
-LiquidLine line3(0, 2, "3.", tarrif[index + 2][0], "=", tarrif[index + 2][1]);
-LiquidLine line4(0, 3, "4.", tarrif[index + 3][0], "=", tarrif[index + 3][1]);
-
-LiquidScreen firstScrn(line1, line2, line3, line4);
-LiquidMenu menu(lcd);
 
 void setup()
 {
   lcdsetup(), lcd.setCursor(0, 0), lcd.print("WELCOME IN OUR HOTEL"), SIM800L.begin(BAUD);
   lcd.setCursor(0, 1), lcd.print("CHECKING THE GSM..."), lcd.setCursor(3, 2);
   lcd.print(isGsmReady() ? "GSM IS READY!" : "NOT CONNECTED!"), delay(2000), lcd.clear();
-  menu.add_screen(firstScrn);
 };
 
 void loop()
@@ -48,17 +39,17 @@ void loop()
   {
     if (c)
     {
-      index = 0;
+      qin = 0;
       c = !c;
     }
     else
     {
-      index = 4;
+      qin = 4;
       c = !c;
     }
     oldTime = millis();
-    menu.update();
   }
+  showTarrif(qin);
 };
 
 bool isGsmReady()
@@ -111,4 +102,14 @@ bool clearRow(const byte scrnSize[2], const byte R2Del)
   }
 };
 
-void showTarrif() {}
+void showTarrif(byte ind)
+{
+  lcd.setCursor(0, 0), lcd.print("1."), lcd.print(tarrif[ind][0]), lcd.print("=");
+  lcd.print(tarrif[ind][1]);
+  lcd.setCursor(0, 1), lcd.print("1."), lcd.print(tarrif[ind + 1][0]), lcd.print("=");
+  lcd.print(tarrif[ind][1]);
+  lcd.setCursor(0, 2), lcd.print("1."), lcd.print(tarrif[ind + 2][0]), lcd.print("=");
+  lcd.print(tarrif[ind][1]);
+  lcd.setCursor(0, 3), lcd.print("1."), lcd.print(tarrif[ind + 3][0]), lcd.print("=");
+  lcd.print(tarrif[ind][1]);
+};
