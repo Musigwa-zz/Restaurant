@@ -9,8 +9,8 @@ void proccessOrder()
     char pressedKey = myKeypad.waitForKey();
     if (isDigit(pressedKey) && pressedKey != '0')
     {
-      clientOrder += pressedKey;
-      Total += atoi(tarrif[(pressedKey - 0) - 49][1]), lcd.setCursor(0, 0);
+      clientOrder += pressedKey, Total += atoi(tarrif[(pressedKey - 0) - 49][1]);
+      lcd.setCursor(0, 0);
       if (i < 20)
       {
         lcd.print("YOU'VE CHOSEN:"), lcd.setCursor(i, j);
@@ -45,8 +45,7 @@ void proccessOrder()
             SIM800L.print(tarrif[clientOrder.substring(0, 1).toInt() - 1][0]);
             SIM800L.print("(");
             SIM800L.print(tarrif[clientOrder.substring(0, 1).toInt() - 1][1]);
-            SIM800L.print("RWF)");
-            clientOrder.remove(0, 1);
+            SIM800L.print("RWF)"), clientOrder.remove(0, 1);
             if (clientOrder.length() == 0)
             {
               SIM800L.print(". Total payment: " + String(Total) + "RWF");
@@ -57,8 +56,7 @@ void proccessOrder()
               SIM800L.print(", ");
             }
           }
-          _buffer += _readSerial(5000);
-          SIM800L.println((char)26);
+          _buffer += _readSerial(5000), SIM800L.println((char)26);
           _buffer += _readSerial(5000);
           if (((_buffer.indexOf("AT+CMGS")) != -1))
           {
@@ -66,14 +64,16 @@ void proccessOrder()
           }
           else
           {
-            lcd.print("NOT SENT");
+            lcd.print("NOT SENT"), lcd.setCursor(0, 3), lcd.print("CALL: " + number);
+            myKeypad.waitForKey();
           }
         }
         else
         {
-          lcd.print("NOT SENT");
+          lcd.print("NOT SENT"), lcd.setCursor(0, 3), lcd.print("CALL: " + number);
+          myKeypad.waitForKey();
         }
-        delay(2000), lcd.clear();
+        Total = 0, clientOrder = "",delay(2000), lcd.clear();
         break;
       }
       else
@@ -86,7 +86,7 @@ void proccessOrder()
         else
         {
           clearRow(lcdSize, 2), lcd.print("CAN'T SEND EMPTY REQ"), delay(2000);
-          lcd.clear();
+          Total = 0, clientOrder = "",lcd.clear();
           break;
         }
       }

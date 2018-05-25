@@ -50,8 +50,7 @@ void loop()
   {
     if (key == 'A')
     {
-      lcd.clear();
-      proccessOrder();
+      lcd.clear(), proccessOrder();
     }
   }
   else
@@ -61,13 +60,11 @@ void loop()
       lcd.clear();
       if (c)
       {
-        qin = 0;
-        c = !c;
+        qin = 0, c = !c;
       }
       else
       {
-        qin = 4;
-        c = !c;
+        qin = 4, c = !c;
       }
       oldTime = millis();
     }

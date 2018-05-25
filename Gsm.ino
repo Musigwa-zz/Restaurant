@@ -1,14 +1,7 @@
 bool isGsmReady()
 {
   SIM800L.println("AT");
-  if (_readSerial(2000).indexOf("OK") != -1)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  return _readSerial(2000).indexOf("OK") != -1 ? true : false;
 };
 
 String _readSerial(uint32_t timeout)
